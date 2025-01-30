@@ -1,0 +1,53 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.column {
+    width: 30%;
+    margin: 10px;
+}
+.column h2 {
+    background-color: #345461;
+    color: white;
+    padding: 20px;
+}
+.task {
+    background-color: #CBE1EB;
+    margin: 10px 0;
+    padding: 20px;
+    position: relative;
+}
+.task-name {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+.task-description {
+    margin: 5px 0;
+    font-size: 15px;
+}
+.arrow-button {
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
+    aspect-ratio: 1;
+}
+.register-btn {
+    width: 200px;
+    background-color: #20ADEE;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    margin: 30px 10px;
+}
