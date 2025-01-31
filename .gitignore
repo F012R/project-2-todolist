@@ -1,0 +1,23 @@
+# Eclipse 관련 파일
+.classpath
+.project
+.settings/
+# Maven 빌드 디렉터리
+target/
+# IDE 관련 설정
+.idea/
+*.iml
+.vscode/
+# OS에서 자동 생성되는 파일
+.DS_Store
+Thumbs.db
+# Maven Wrapper 관련 파일
+mvnw
+mvnw.cmd
+.mvn/
+# Maven 빌드 과정에서 생성되는 임시 파일
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+dependency-reduced-pom.xml
+release.properties
