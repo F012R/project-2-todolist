@@ -19,7 +19,7 @@ public class TodoAddServlet extends HttpServlet {
 
     public TodoAddServlet() {
         super();
-    }   
+    }    
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,11 +27,6 @@ public class TodoAddServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String title = request.getParameter("title");
 		String sequence = request.getParameter("sequence");
-		
-		// test code
-//		System.out.println("담당자:"+name);
-//		System.out.println("할 일:"+title);
-//		System.out.println("우선순위:"+sequence);
 		
 		TodoDao dao = new TodoDao();
 		TodoDto newDto = new TodoDto();

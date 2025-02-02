@@ -84,7 +84,7 @@ public class TodoDao {
 		return insertCount;
 	}
 	
-	public int updateTodo(TodoDto todo, String type) {
+	public int updateTodo(TodoDto todo) {
 		int updateCount = 0;  // 몇 건 수정했는지 
 
 		try {
