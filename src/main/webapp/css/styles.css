@@ -61,7 +61,16 @@ article {
 }
   
 .block-info {
-    color: #314d5b
+    color: #314d5b;
+    position: relative;
+}
+
+.btn-move {
+	display: flex;
+	position: absolute;
+	margin-top: 5px;
+	bottom: 0;
+	right: 0;
 }
 
 .done .btn-move {

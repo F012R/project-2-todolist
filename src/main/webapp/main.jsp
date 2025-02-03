@@ -73,7 +73,6 @@
 							<h3 class="block-title">${todo.title }</h3>
 							<div class="block-info">
 								등록날짜: 
-<!-- 							regDate format 후 출력하기: yyyy.MM.dd 형식  -->
 								<fmt:parseDate value="${fn:substringBefore(todo.regDate, '.')}" var="fmtRegDate" pattern="yyyy-MM-dd HH:mm:ss" />
 								<fmt:formatDate pattern="yyyy.MM.dd" value="${fmtRegDate}" />, 
 								${todo.name }, 
@@ -84,6 +83,7 @@
 				</c:forEach>
 			</section>	
 		</div>
-	</main>		
+	</main>	
+	<script type="text/javascript" src="./scripts/main_ac.js"></script> 	
 </body>
 </html>

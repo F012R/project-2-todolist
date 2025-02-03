@@ -7,7 +7,6 @@ function xhr(id, type, callback) {
 	var params = "id="+id+"&type="+type;
 	
 	xhttp.onreadystatechange = function() {
-		console.log("onreadystatechange");
         if (this.readyState == 4 && this.status == 200) {
 			console.log(this.responseText);
         }
@@ -20,7 +19,7 @@ function xhr(id, type, callback) {
 
 
 // todo와 doing type의 블럭에서 버튼이 눌리면 
-Array.from(btn_move).forEach((btn) => {
+function addEventListenerToButton(btn) {
     btn.addEventListener("click", function(evt){
 		var article_node = evt.target.parentNode.parentNode;   // 버튼이 눌린 article
       	var now_type = article_node.getAttribute('data-type');
@@ -48,10 +47,19 @@ Array.from(btn_move).forEach((btn) => {
 		}
         section.insertBefore(cloneNode, first_article);
         article_node.remove();
+        
+        // 새로 생성된 버튼에도 이벤트 리스너 등록
+        var newBtn = cloneNode.querySelector(".btn-move");
+        if (newBtn) {
+            addEventListenerToButton(newBtn);
+        }
       
         /* post로 TodoTypeServlet에 값 전달하기 */
         xhr(cloneNode.getAttribute('data-id'), now_type);
-    }, false);
-  })
+    });
+  }
+  
+  document.querySelectorAll(".btn-move").forEach(addEventListenerToButton);
+
 
 
