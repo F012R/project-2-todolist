@@ -28,6 +28,7 @@
     	<div class="todo-container">
 		    <section class="todo-section">
 		    	<div class="col-name">TODO</div>
+		    	<c:if test="${not empty todos }">
 				<c:forEach items="${todos }" var="todo">
 					<c:if test="${todo.type eq 'TODO' }">					
 						<article data-type="${todo.type }" data-id="${todo.id }" data-regDate="${todo.regDate}">
@@ -45,6 +46,8 @@
 						</article>
 					</c:if>
 				</c:forEach>
+				</c:if>
+				
 			</section>
 		   <section class="doing-section">
 		      <div class="col-name">DOINIG</div>

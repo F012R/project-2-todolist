@@ -5,6 +5,9 @@ body {
 	justify-content: center;
 }
 
+body {
+	font-size: 1.2em;
+}
 form {
 	
 	text-align: left;
@@ -13,6 +16,12 @@ form {
 
 .single-form-container {
 	margin-top: 10px;
+}
+
+.single-form-container > input {
+/*	height: 25px;*/
+	margin-top: 5px;
+	font-size: 1.1em;
 }
 
 .container-btn {

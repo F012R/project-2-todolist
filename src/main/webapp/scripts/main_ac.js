@@ -12,7 +12,7 @@ function xhr(id, type, callback) {
         }
     };
 
-    xhttp.open("post", 'todotype', true);
+    xhttp.open("post", '/todo/todotype', true);
     xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
     xhttp.send(params);
 }
@@ -39,9 +39,11 @@ function addEventListenerToButton(btn) {
         var now_regdate = cloneNode.dataset.regdate;
         
         /* 버튼을 누른 article을 다음 section의 article 사이에 삽입: 등록 날짜 내림차순 기준 */
-       	while (first_article !== null && first_article.tagName !== undefined && first_article.dataset.regdate > now_regdate) {
+		while (true) {
 			first_article = first_article.nextSibling;
-			if (first_article === null || first_article.tagName) {
+			if (first_article === null)
+				break;
+			if (first_article.tagName !== undefined && first_article.dataset.regdate <= now_regdate) {
 				break;
 			}
 		}
