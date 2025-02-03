@@ -28,10 +28,6 @@ public class TodoDao {
 		String sql = "select id, title, name, sequence, type, regdate "
 				+ "from todo "
 				+ "order by regdate desc ";
-//				+ "select id, title, name, sequence, type, regdate "
-//				+ "from todo "
-//				+ "where type = 'TODO' "
-//				+ "order by regdate desc";
 		
 		try (Connection conn = DriverManager.getConnection(dburl, dbUser, dbpasswd);
 			PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -60,7 +56,7 @@ public class TodoDao {
 	}
 	
 	public int addTodo(TodoDto todo) {
-		int insertCount = 0;  // 몇 건 수정했는지 
+		int insertCount = 0; 
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -76,8 +72,7 @@ public class TodoDao {
 			ps.setString(2, todo.getName());
 			ps.setInt(3, todo.getSequence());
 
-			insertCount = ps.executeUpdate();	// insert, update, delete 문 사용 시 
-
+			insertCount = ps.executeUpdate();	
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -85,7 +80,7 @@ public class TodoDao {
 	}
 	
 	public int updateTodo(TodoDto todo) {
-		int updateCount = 0;  // 몇 건 수정했는지 
+		int updateCount = 0;  
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -106,7 +101,7 @@ public class TodoDao {
 			ps.setString(1, next_type);
 			ps.setInt(2, todo.getId());
 
-			updateCount = ps.executeUpdate();	// insert, update, delete 문 사용 시 
+			updateCount = ps.executeUpdate();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
