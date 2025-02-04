@@ -91,7 +91,7 @@
 <body>
 	<header>
 		<h1>나의 해야할 일들</h1>
-		<a href="./todoForm">새로운 TODO 등록</a>
+		<a href="./addTodo">새로운 TODO 등록</a>
 	</header>
 	<div class="container">
 		<div id="TODO" class="main">
