@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="column" id="todo-column">
+    <h2>Todo</h2>
+    <div id="todo-cards" class="card-container"></div>
+  </div>
+  <div class="column" id="doing-column">
+    <h2>Doing</h2>
+    <div id="doing-cards" class="card-container"></div>
+  </div>
+  <div class="column" id="done-column">
+    <h2>Done</h2>
+    <div id="done-cards" class="card-container"></div>
+  </div>
+</div>
+
+<script>
+  // API 호출하여 할 일 데이터 불러오기
+  fetch('/todolist/todos')
+          .then(response => response.json())
+          .then(data => {
+            data.forEach(task => {
+              const card = createCard(task);
+              // 상태에 따라 카드 배치
+              if (task.status === 'todo') {
+                document.getElementById('todo-cards').appendChild(card);
+              } else if (task.status === 'doing') {
+                document.getElementById('doing-cards').appendChild(card);
+              } else if (task.status === 'done') {
+                document.getElementById('done-cards').appendChild(card);
+              }
+            });
+          })
+          .catch(error => console.error('Error fetching data:', error));
+
+  // 카드 생성 함수
+  function createCard(task) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    card.innerHTML = `
+                <h3 class="task-title">${task.title}</h3>
+                <p><strong>담당자:</strong> ${task.assignee}</p>
+                <p><strong>중요도:</strong> ${task.priority}</p>
+                <p><strong>등록날짜:</strong> ${task.created_at}</p>
+            `;
+
+    return card;
+  }
+</script>
+</body>
+</html>
