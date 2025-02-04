@@ -52,7 +52,7 @@
     height: 40px;
 }
 
-/* 이전 버튼 */
+
 .back-btn {
     background-color: white;
     border: 1px solid #ccc;
@@ -62,14 +62,14 @@
     display: inline-block;
 }
 
-/* 제출 및 내용지우기 버튼 */
+
 .submit-btn, .reset-btn {
     background-color: #22aded;
     color: white;
     
 }
 
-/* 제출, 내용지우기 버튼을 오른쪽으로 배치 */
+
 .right-buttons {
     display: flex;
     gap: 15px; /* 버튼 간격 조정 */

@@ -25,12 +25,8 @@
             </div>
             
             <div class="button-group">
-                <button type="button" class="back-btn" onclick="history.back()">이전</button>
-                <button type="submit" class="submit-btn">제출</button>
-                <button type="reset" class="reset-btn">내용 지우기</button>
-            </div>
-            
-            <div class="button-group">
+
+
     			<button type="button" class="back-btn" onclick="history.back()">< 이전</button>
     			<div class="right-buttons">
         			<button type="submit" class="submit-btn">제출</button>
