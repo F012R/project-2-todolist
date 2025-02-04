@@ -29,7 +29,7 @@ public class TodoAddServlet extends HttpServlet {
             response.sendRedirect("main");
         } else {
             request.setAttribute("error", "할 일 추가에 실패했습니다.");
-            request.getRequestDispatcher("/addTodo.jsp").forward(request, response);
+            request.getRequestDispatcher("/todoForm.jsp").forward(request, response);
         }
     }
 }
