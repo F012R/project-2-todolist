@@ -1,92 +1,127 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% request.setCharacterEncoding("UTF-8"); %>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>새로운 TODO 등록</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            color: #333;
-        }
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input[type="text"], input[type="submit"], input[type="reset"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-        }
-        input[type="radio"] {
-            margin-right: 5px;
-        }
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        input[type="reset"], .back-btn {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin-top: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<style>
+body {
+  background: lightgray;
+}
+
+.container {
+  background: white;
+  margin:0 auto;
+  width: 80%;
+  padding: 3%;
+}
+
+.header {
+  text-align: center;
+}
+
+.container-form {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.container-input-description {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+input[type="text"] {
+  font-size: 20px;
+}
+
+input[name="title"] {
+  width: 100%;
+}
+
+input[name="name"] {
+  width: 50%;
+}
+
+input[type="radio"] {
+  margin-bottom: 20px;
+}
+
+.footer {
+  display: flex;
+  margin-top: 20px;
+}
+
+a {
+  border: 1px solid gray;
+  font-weight: bold;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+a:hover {
+  color: gray;
+}
+
+.footer-btn {
+  display: flex;
+}
+
+.footer-btn input {
+  padding: 10px;
+  width: 130px;
+  background: #20ADEE;
+  font-size: 16px;
+  color: white;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.footer-btn input:hover {
+  text-decoration: underline;
+  background: rgb(32, 173, 238, 0.7);
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  margin-left: 100px;
+  margin-right: 20px;
+}
+
+</style>
+<title>TODO LIST</title>
 </head>
 <body>
-    <h1>새로운 TODO 등록</h1>
-    <form action="addTodo" method="post" onsubmit="return validateForm()">
-        <label for="title">할일 제목:</label>
-        <input type="text" id="title" name="title" maxlength="24" required>
-
-        <label for="name">담당자:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label>우선순위:</label>
-        <input type="radio" id="low" name="sequence" value="1" required>
-        <label for="low">낮음</label>
-        <input type="radio" id="medium" name="sequence" value="2">
-        <label for="medium">중간</label>
-        <input type="radio" id="high" name="sequence" value="3">
-        <label for="high">높음</label>
-
-        <input type="submit" value="제출">
-        <input type="reset" value="내용 지우기">
-    </form>
-    <a href="main" class="back-btn">이전</a>
-
-    <script>
-        function validateForm() {
-            var title = document.getElementById("title").value;
-            var name = document.getElementById("name").value;
-            var sequence = document.querySelector('input[name="sequence"]:checked');
-
-            if (title.trim() === "" || name.trim() === "" || !sequence) {
-                alert("모든 항목을 입력해주세요.");
-                return false;
-            }
-            return true;
-        }
-    </script>
+	<div class="container">
+		<div class="header"><h1>할일 등록</h1></div>
+		<div class="container-form">
+			<form action="./addTodo" method="post">
+				<div class="container-title">
+					<div class="container-input-description">어떤 일인가요?</div>
+					<input type="text" name="title" required maxlength="24" placeholder="할 일(24자까지)">
+				</div>
+				<div class="container-name">
+					<div class="container-input-description">누가 할일인가요?</div>
+					<input type="text" name="name" required placeholder="이름">
+				</div>
+				<div class="container-sequence">
+					<div class="container-input-description">우선순위를 선택하세요</div>
+					<input type="radio" name="sequence" value="1" checked>1순위
+					<input type="radio" name="sequence" value="2">2순위
+					<input type="radio" name="sequence" value="3">3순위
+				</div>
+				<div class="footer">
+					<a href="/Todo/main">&lt; 이전</a>
+					<div class="footer-btn">
+						<input type="submit">
+						<input type="reset" value="내용지우기">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>
