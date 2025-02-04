@@ -45,15 +45,73 @@
   function createCard(task) {
     const card = document.createElement('div');
     card.classList.add('card');
+    card.dataset.id = task.id; // 할 일 ID 추가
+    card.dataset.status = task.status; // 상태 정보를 카드에 저장
 
     card.innerHTML = `
-                <h3 class="task-title">${task.title}</h3>
-                <p><strong>담당자:</strong> ${task.assignee}</p>
-                <p><strong>중요도:</strong> ${task.priority}</p>
-                <p><strong>등록날짜:</strong> ${task.created_at}</p>
-            `;
+    <h3 class="task-title">${task.title}</h3>
+    <p><strong>담당자:</strong> ${task.assignee}</p>
+    <p><strong>중요도:</strong> ${task.priority}</p>
+    <p><strong>등록날짜:</strong> ${task.created_at}</p>
+    <button class="move-right" onclick="moveToNextState(this)">➡</button> <!-- 오른쪽 화살표 -->
+  `;
+
+    // 'done' 상태인 경우, 화살표 숨기기
+    if (task.status === 'done') {
+      const moveButton = card.querySelector('.move-right');
+      moveButton.style.display = 'none';
+    }
 
     return card;
+  }
+
+    // 카드 이동 함수
+    function moveToNextState(button) {
+    const card = button.closest('.card');
+    const currentState = card.parentElement;
+    const cardContainer = card.closest('.container');
+
+    // 각 상태를 나타내는 div
+    const todoContainer = document.getElementById('todo-cards');
+    const doingContainer = document.getElementById('doing-cards');
+    const doneContainer = document.getElementById('done-cards');
+
+    // 'todo' 상태에서 'doing' 상태로 이동
+    if (currentState === todoContainer) {
+    doingContainer.appendChild(card);
+    card.dataset.status = 'doing'; // 상태 업데이트
+    updateTaskStatus(card, 'doing'); // 서버에 상태 변경 요청
+  }
+    // 'doing' 상태에서 'done' 상태로 이동
+    else if (currentState === doingContainer) {
+    doneContainer.appendChild(card);
+    card.dataset.status = 'done'; // 상태 업데이트
+    updateTaskStatus(card, 'done'); // 서버에 상태 변경 요청
+    button.style.display = 'none'; // 'done' 상태에서 화살표 숨기기
+  }
+  }
+
+    // 서버에 상태 업데이트 요청을 보내는 함수
+    function updateTaskStatus(card, newStatus) {
+    const taskId = card.dataset.id; // 카드의 ID 가져오기 (data-id 속성에 저장된 값)
+
+    fetch('/todolist/updateTaskStatus', {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+    body: `taskId=${taskId}&newStatus=${newStatus}`
+  })
+    .then(response => {
+    if (response.ok) {
+    console.log('Status updated successfully');
+  } else {
+    console.error('Failed to update task status');
+  }
+  })
+    .catch(error => {
+    console.error('Error:', error);
+  });
   }
 </script>
 </body>
