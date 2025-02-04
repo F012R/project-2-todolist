@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+body {
+    background-color: #f3f7fb;
+    font-family: Arial, sans-serif;
+    width:90%;
+    margin: 0 auto;
+}
+
+
+.add-todo-container {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content:flex-end;
+    width:100%;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 32px;
+    color: #2a3d47;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.add-todo {
+    background-color: #22aded;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.todo-box {
+    display: flex;
+    justify-content: space-between;
+    
+    margin-top: 30px;
+    margin-bottom:10px;
+}
+
+.todo-section {
+    width: 30%;
+}
+
+.list-header {
+    background-color: #2a3d47;
+    color: white;
+    padding: 25px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.todo-item {
+    background-color: #cee5ef;
+    margin-top:10px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom:10px;
+}
+.todo-meta {
+    display: flex;
+    align-items: center;  /* 세로 중앙 정렬 */
+    justify-content: space-between;  /* 양쪽 정렬 */
+    gap: 10px; /* 요소 사이 간격 */
+}
+
+.todo-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.todo-details {
+    flex-grow: 1;
+}
+
+.change-btn {
+	background-color:#ffffff;
+	color:black;
+	padding: 5px 10px;
+	border:none;
+    cursor: pointer;
+    margin-left:auto;
+}

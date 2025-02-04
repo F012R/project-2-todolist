@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+.form-container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    color: black;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color:black;
+    
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom:20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* 우선순위 선택 라디오 버튼 간격 */
+.radio-buttons {
+    margin-top: 10px; /* 라디오 버튼 위 간격 추가 */
+    margin-bottom:30px;
+}
+
+.radio-buttons input {
+    margin-right: 10px;
+}
+
+/* 버튼 크기 및 정렬 */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.back-btn, .submit-btn, .reset-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 120px; 
+    height: 40px;
+}
+
+/* 이전 버튼 */
+.back-btn {
+    background-color: white;
+    border: 1px solid #ccc;
+    text-decoration: underline; 
+    color: black;
+    white-space: nowrap;  
+    display: inline-block;
+}
+
+/* 제출 및 내용지우기 버튼 */
+.submit-btn, .reset-btn {
+    background-color: #22aded;
+    color: white;
+    
+}
+
+/* 제출, 내용지우기 버튼을 오른쪽으로 배치 */
+.right-buttons {
+    display: flex;
+    gap: 15px; /* 버튼 간격 조정 */
+}
+
